@@ -1,0 +1,58 @@
+html {
+    scroll-behavior: smooth;
+}
+
+.btn {
+    display: flex;
+    margin: auto;
+    color: var(--bs-btn-color);
+    border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
+    background-color: var(--bs-btn-bg);
+}
+
+.btn-secondary {
+    background-color: var(--bs-white);
+    color: var(--bs-btn-border-width);
+}
+
+.cadastro_entrar {
+    display: flex;
+    flex-wrap: nowrap;
+}
+.cadastro_entrar > .btn-primary ~ .btn-secondary {
+    
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.cadastro_entrar > .btn-secondary {
+    margin-right: auto;
+}
+
+.col {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    margin: 1.5rem auto;
+    width: 35%;
+  }
+  
+  .col h2 {
+    font-size: 64px;
+  }
+
+  
+#img_chamada {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    width: 100%;
+  }
+
+#img_chamada {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    width: auto;
+    height: 480px;
+  }

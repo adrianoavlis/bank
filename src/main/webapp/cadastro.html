@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Formulário de Cadastro de Correntista</title>
+        <link rel="stylesheet" href="style/bootstrap.css">
+        <link href="style/style.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-ligth bg-ligth">
+            <div class="container">
+                <a class="navbar-brand text-center ms-2" href="index.html">
+                    <img src="https://media.discordapp.net/attachments/963533169708134463/1166479547840090203/OIG.51t5Dx_P0SKgz-removebg-preview.png" width="50px">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+        </nav>
+
+
+        <div class="container">
+            <h1 class="text-center">Cadastro de Correntista</h1>
+            <form name="formConta" action="Controller?acao=insert">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <!-- Campo para o nome do correntista -->
+                        <div class="form-group mt-3">
+                            <label for="nome">Nome:</label>
+                            <input type="text" class="form-control" id="nome" name="nome" required>
+                        </div>
+
+                        <!-- Campo para o e-mail do correntista -->
+                        <div class="form-group mt-3">
+                            <label for="email">E-mail:</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+
+                        <!-- Campo para o CPF do correntista -->
+                        <div class="form-group mt-3">
+                            <label for="cpf">CPF:</label>
+                            <input type="text" class="form-control" id="cpf" name="cpf" required>
+                        </div>
+
+                        <!-- Campo para a senha do correntista -->
+                        <div class="form-group mt-3">
+                            <label for="senha">Senha:</label>
+                            <input type="password" class="form-control" id="senha" name="senha" required>
+                        </div>
+
+                        <!-- Campo para o telefone do correntista -->
+                        <div class="form-group mt-3">
+                            <label for="telefone">Telefone:</label>
+                            <input type="tel" class="form-control" id="telefone" name="telefone">
+                        </div>
+                        <!-- Botão de envio do formulário -->
+
+                    </div>
+                </div>
+                <input type="button" onclick="validar()" class="btn btn-primary mt-3" value="Cadastrar">
+            </form>
+        </div>
+
+        <div class="footer fixed-bottom text-center">
+            &copy; 2023 Sistema Bancário
+        </div>
+
+        <script src="scripts/script.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+</html>

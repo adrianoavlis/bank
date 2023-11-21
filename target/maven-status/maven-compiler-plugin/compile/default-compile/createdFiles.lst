@@ -1,0 +1,7 @@
+model\Correntista.class
+model\Transacao.class
+controller\Controller.class
+controller\AutenticaController.class
+model\Usuario.class
+model\Conexao.class
+model\DAO.class
