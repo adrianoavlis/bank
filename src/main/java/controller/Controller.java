@@ -33,7 +33,7 @@ public class Controller extends HttpServlet {
         String action = request.getServletPath();
         System.out.println(action);
         if (action.equals("/mainAdm")) {
-            contas(request, response);
+            listarContas(request, response);
         } else if (action.equals("/mainUser")) {
             minhaConta(request, response);
         } else if (action.equals("/insert")) {
@@ -50,8 +50,9 @@ public class Controller extends HttpServlet {
     }
 
     // Listar Contatos
-    protected void contas(HttpServletRequest request, HttpServletResponse response)
+    protected void listarContas(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         ArrayList<Correntista> contas = dao.listarContas();
 
         // encaminhar lista para area do ADM

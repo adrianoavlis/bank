@@ -9,7 +9,7 @@ public class Conexao {
 	public Connection conectar() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection( "jdbc:mysql://127.0.0.1:3306/bank?useTimezone=true&serverTimezone=UTC", "root", "admin");
+			con = DriverManager.getConnection( "jdbc:mysql://localhost:3306/bank?useTimezone=true&serverTimezone=UTC", "root", "admin");
 			return con;
 		} catch (Exception e) {
 			System.out.println(e);

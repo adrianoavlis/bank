@@ -40,9 +40,9 @@ public class DAO {
     public ArrayList<Correntista> listarContas() {
         ArrayList<Correntista> contas = new ArrayList<Correntista>();
         Conexao con = new Conexao();
+        String list = "select * from contas order by id";
         try {
-            con.conectar();
-            PreparedStatement pst = con.getConnection().prepareStatement("select * from contas order by nome");
+            PreparedStatement pst = con.conectar().prepareStatement(list);
             ResultSet retornos = pst.executeQuery();
 
             // sera executado enquanto houver contatos
