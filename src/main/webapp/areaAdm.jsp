@@ -38,7 +38,7 @@
                     <th>Opcões</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="form-group mt-3">
                 <%
                     DAO dao = new DAO();
                     ArrayList<Correntista> lista_contas = dao.listarContas();
