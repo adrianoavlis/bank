@@ -52,8 +52,8 @@
                     <td><%=lista_contas.get(i).getUsuario().getCpf()%></td>
                     <td><%=lista_contas.get(i).getUsuario().getTelefone()%></td>
                     <td>
-                        <a href="select?idcon=<%=lista_contas.get(i).getUsuario().getId()%>">Editar</a> 
-                        <a href="javascript: confirmar(<%=lista_contas.get(i).getUsuario().getId()%>)">Excluir</a></td>
+                        <a href="" action="dao.alterarConta(lista_contas.get(i).getUsuario())>Editar</a> 
+                        <a href="" action="dao.deletarConta(lista_contas.get(i).getUsuario())>Excluir</a></td>
                 </tr>
                 <%
                         }
