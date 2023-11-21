@@ -10,12 +10,12 @@
 <html lang="pt-br">
     <head>
         <meta charset="utf-8">
-        <title>Agenda de Contatos</title>
+        <title>Área Administrador</title>
         <link rel="icon" href="imagens/9110984_call_phone_icon.png">
         <link rel="stylesheet" href="style/style.css">
     </head>
     <body>
-        <h1>Agenda de Contas</h1>
+        <h1>Área Administrador</h1>
         <a href="cadastro.html" >Novo Conta</a>
 
         <table id="tabela">
