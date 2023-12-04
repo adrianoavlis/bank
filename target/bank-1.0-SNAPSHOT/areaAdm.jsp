@@ -25,7 +25,7 @@
     </nav>
         
         <h1>Área Administrador</h1>
-        <a href="cadastro.html" >Novo Conta</a>
+        <a href="cadastroCorrentista.html" >Novo Conta</a>
 
         <table id="tabela" class="table-light">
             <thead>
@@ -52,8 +52,8 @@
                     <td><%=lista_contas.get(i).getUsuario().getCpf()%></td>
                     <td><%=lista_contas.get(i).getUsuario().getTelefone()%></td>
                     <td>
-                        <a href="select?idcon=<%=lista_contas.get(i).getUsuario().getId()%>">Editar</a> 
-                        <a href="javascript: confirmar(<%=lista_contas.get(i).getUsuario().getId()%>)">Excluir</a></td>
+                        <a href="" action="dao.alterarConta(lista_contas.get(i).getUsuario())>Editar</a> 
+                        <a href="" action="dao.deletarConta(lista_contas.get(i).getUsuario())>Excluir</a></td>
                 </tr>
                 <%
                         }

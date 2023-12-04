@@ -1,7 +1,10 @@
 model\Correntista.class
 model\Transacao.class
-controller\Controller.class
 controller\AutenticaController.class
+model\CorrentistaDAO.class
+controller\CorrentistaController.class
 model\Usuario.class
+controller\AdmController.class
+model\AdmDAO.class
 model\Conexao.class
 model\DAO.class

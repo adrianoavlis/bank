@@ -1,76 +1,69 @@
+
 package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import model.DAO;
 import model.Correntista;
+import model.DAO;
+import model.CorrentistaDAO;
 import model.Transacao;
+import model.Usuario;
 
-@WebServlet(urlPatterns = {"/Controller", "/mainAdm", "/mainUser", "/insert", "/select", "/update", "/delete"})
-public class Controller extends HttpServlet {
+@WebServlet(urlPatterns = {"/CorrentistaController", "/mainUser", "/insert", "/select", "/update", "/delete"})
+public class CorrentistaController extends HttpServlet {
 
-    private static final long serialVersionUID = 1L;
-    DAO dao = new DAO();
+    CorrentistaDAO dao = new CorrentistaDAO();
     Correntista conta = new Correntista();
-
-    public Controller() {
-        super();
-
-    }
-
+    
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getServletPath();
         System.out.println(action);
-        if (action.equals("/mainAdm")) {
-            listarContas(request, response);
-        } else if (action.equals("/mainUser")) {
-            minhaConta(request, response);
+        if (action.equals("/mainUser")) {
+            try {
+                minhaConta(request, response);
+            } catch (SQLException ex) {
+                RequestDispatcher rd = request.getRequestDispatcher("formLogin.jsp");
+                    rd.forward(request, response);
+            }
         } else if (action.equals("/insert")) {
             novaConta(request, response);
         } else if (action.equals("/select")) {
-            listarConta(request, response);
+            try {
+                selecionar(request, response);
+            } catch (SQLException ex) {
+               RequestDispatcher rd = request.getRequestDispatcher("formLogin.jsp");
+                    rd.forward(request, response);
+            }
         } else if (action.equals("/update")) {
-            editarContato(request, response);
+            editar(request, response);
         } else if (action.equals("/delete")) {
-            deletarContato(request, response);
+            deletar(request, response);
         } else {
             response.sendRedirect("index.html");
         }
     }
-
-    // Listar Contatos
-    protected void listarContas(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-        ArrayList<Correntista> contas = dao.listarContas();
-
-        // encaminhar lista para area do ADM
-        request.setAttribute("contas", contas);
-        RequestDispatcher rd = request.getRequestDispatcher("areaAdm.jsp");
-        rd.forward(request, response);
-    }
-
+    
+   
     protected void minhaConta(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
 
         Correntista conta = new Correntista();
         conta.getUsuario().setId((int) request.getSession().getAttribute("id"));
 
-        ArrayList<Transacao> transacoes = dao.listarTransacoes(conta);
+        Correntista contaobtida = dao.selecionar(conta);
 
         // encaminhar lista para area do ADM
-        request.setAttribute("transacoes", transacoes);
+        request.setAttribute("usuario", contaobtida);
         RequestDispatcher rd = request.getRequestDispatcher("areaUsuario.jsp");
         rd.forward(request, response);
     }
@@ -89,27 +82,24 @@ public class Controller extends HttpServlet {
         conta.getUsuario().setTelefone(request.getParameter("Telefone"));
 
         // invocar DAO passando o objeto
-        dao.inserirConta(conta);
+        dao.inserir(conta);
 
         // Redirecionar para main.jsp
-        response.sendRedirect("main");
+        response.sendRedirect("index.html");
 
     }
 
     // Editar Contato
-    protected void listarConta(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void selecionar(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, SQLException {
         Correntista conta = new Correntista();
         // setar JavaBeans
         conta.getUsuario().setId(Integer.parseInt(request.getParameter("id")));
 
         // executar método selecionar contato (DAO)
-        try {
-            dao.selecionarConta(conta);
-        } catch (SQLException e) {
-
-            System.out.println(e);
-        }
+       
+            Correntista contaobtida = dao.selecionar(conta);
+        
 
         // Setar o conteúdo do form com o objeto
         request.setAttribute("id", conta.getUsuario().getId());
@@ -124,7 +114,7 @@ public class Controller extends HttpServlet {
 
     }
 
-    protected void editarContato(HttpServletRequest request, HttpServletResponse response)
+    protected void editar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         // Setar dados do form para o objeto
@@ -134,22 +124,21 @@ public class Controller extends HttpServlet {
         conta.getUsuario().setCpf(request.getParameter("email"));
         conta.getUsuario().setSenha(request.getParameter("senha"));
         conta.getUsuario().setTelefone(request.getParameter("telefone"));
-        dao.alterarContato(conta);
+        dao.alterar(conta);
 
         // Redirecionar para o agenda.jsp
         response.sendRedirect("areaAdm.jsp");
     }
 
     // Remover um Contato
-    protected void deletarContato(HttpServletRequest request, HttpServletResponse response)
+    protected void deletar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Setar Variável id no Objeto
         conta.getUsuario().setId(Integer.parseInt(request.getParameter("id")));
         // Executar o método deletarContato(DAO) passando o objeto
-        dao.deletarContato(conta);
+        dao.deletar(conta);
         // Redirecionar para o agenda.jsp
         response.sendRedirect("areaAdm.jsp");
 
     }
-
 }

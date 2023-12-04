@@ -29,7 +29,7 @@
                             <a class="nav-link" href="transferencia.html">Transferência de Saldo</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="cadastro.html">Ediatr de Conta</a>
+                            <a class="nav-link" href="cadastroCorrentista.html">Ediatr de Conta</a>
                         </li>
                     </ul>
                 </div>
@@ -39,7 +39,7 @@
 
 
         <div class="container">
-            <h1 class="text-center">Editar Contato</h1>
+            <h1 class="text-center">Editar Correntista</h1>
             <form name="frmContato" action="update">
                 <table>
                     <tr>
@@ -61,7 +61,7 @@
                         <td><input type="text" name="telefone" value="<%out.print(request.getAttribute("telefone"));%>"></td>
                     </tr>
                 </table>
-                <input type="button" class="botao1" onclick="validar()" value="Salvar">
+                <input type="button" class="botao1" value="Salvar">
             </form>
         </div>
 
