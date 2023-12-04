@@ -25,7 +25,7 @@
     </nav>
         
         <h1>Área Administrador</h1>
-        <a href="cadastro.html" >Novo Conta</a>
+        <a href="cadastroCorrentista.html" >Novo Conta</a>
 
         <table id="tabela" class="table-light">
             <thead>

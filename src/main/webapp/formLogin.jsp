@@ -37,8 +37,9 @@
                                     <div class="form-group">
                                         <label for="senha">Senha:</label>
                                         <input type="password" class="form-control" name="senha" id="senha" placeholder="Insira a senha">
+                                        <input type="radio" name="adm" value="adm" /> Administrador <br>
                                     </div>
-                                    <button type="submit" class="btn btn-danger btn-block" onclick="validarLogin()">Entrar</button>
+                                    <button type="submit" class="btn btn-danger btn-block">Entrar</button>
                                 </form>
                             </div>
                         </div>
